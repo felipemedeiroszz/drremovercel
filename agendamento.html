@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendamentos - Dr. Remo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="img/logoremo.png" />
+</head>
+<body>
+  <header id="site-header" class="header"></header>
+  <main class="container" style="padding:32px 0 56px;">
+    <h1 class="agenda__title">Agendamentos</h1>
+
+    <section class="agenda">
+      <div class="agenda__calendar-card">
+        <div class="agenda__calendar-header">
+          <h2>Calendário</h2>
+          <div class="agenda__nav">
+            <button class="btn-ghost" id="prevMonth" aria-label="Mês anterior">‹</button>
+            <div id="monthLabel"></div>
+            <button class="btn-ghost" id="nextMonth" aria-label="Próximo mês">›</button>
+          </div>
+        </div>
+        <div class="agenda__weekdays">
+          <div class="agenda__weekday">Seg</div>
+          <div class="agenda__weekday">Ter</div>
+          <div class="agenda__weekday">Qua</div>
+          <div class="agenda__weekday">Qui</div>
+          <div class="agenda__weekday">Sex</div>
+          <div class="agenda__weekday is-muted">Sáb</div>
+          <div class="agenda__weekday is-muted">Dom</div>
+        </div>
+        <div id="calendarGrid" class="agenda__calendar-grid" aria-label="Selecione um dia"></div>
+        <input type="hidden" id="selectedDate" />
+      </div>
+
+      <div class="agenda__time-card">
+        <h2 class="agenda__subtitle">Horários</h2>
+        <div class="agenda__time-groups">
+          <div>
+            <h3 class="agenda__period">Manhã (07:00 - 12:00)</h3>
+            <div id="timesMorning" class="agenda__times"></div>
+          </div>
+          <div>
+            <h3 class="agenda__period">Tarde (13:00 - 17:00)</h3>
+            <div id="timesAfternoon" class="agenda__times"></div>
+          </div>
+        </div>
+        <input type="hidden" id="selectedTime" />
+      </div>
+    </section>
+
+    <section class="agenda__form">
+      <h2 class="agenda__subtitle">Dados Pessoais</h2>
+      <form id="appointmentForm" novalidate>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="fullName">Nome Completo</label>
+            <input id="fullName" name="fullName" type="text" required placeholder="Digite seu nome" />
+          </div>
+          <div class="form-field">
+            <label for="cpf">CPF</label>
+            <input id="cpf" name="cpf" type="text" inputmode="numeric" placeholder="000.000.000-00" pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$" required />
+            <small class="hint">Formato: 000.000.000-00</small>
+          </div>
+          <div class="form-field">
+            <label for="birth">Data de Nascimento</label>
+            <input id="birth" name="birth" type="date" required />
+          </div>
+          <div class="form-field">
+            <label>Tipo de Atendimento</label>
+            <div class="chips" role="group" aria-label="Tipo de atendimento">
+              <!-- Os tipos de atendimento serão carregados dinamicamente da tabela service_types -->
+            </div>
+            <input type="hidden" id="serviceType" name="serviceType" required />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="submitBtn" class="btn-primary" type="submit">Marcar consulta</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer id="site-footer" class="footer"></footer>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/agendamento.js"></script>
+</body>
+</html>

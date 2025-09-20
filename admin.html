@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Admin - Dr. Remo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="img/logoremo.png" />
+</head>
+<body class="page">
+  <header id="site-header" class="header"></header>
+  <main class="container" style="padding:28px 0 56px;">
+    <h1 class="agenda__title">Painel Admin</h1>
+
+    <nav class="admin-tabs" aria-label="Admin">
+      <button class="admin-tab is-active" data-tab="dashboard">Dashboard</button>
+      <button class="admin-tab" data-tab="appointments">Agendamentos</button>
+      <button class="admin-tab" data-tab="blocks">Dias Bloqueados</button>
+      <button class="admin-tab" data-tab="services">Tipos de Atendimento</button>
+    </nav>
+
+    <section id="tab-dashboard" class="admin-tabpanel" role="region" aria-labelledby="dashboard">
+      <div class="admin-stats">
+        <div class="stat-card"><strong id="statTotal">0</strong><span>Total</span></div>
+        <div class="stat-card"><strong id="statScheduled">0</strong><span>Agendadas</span></div>
+        <div class="stat-card"><strong id="statDone">0</strong><span>Feitas</span></div>
+        <div class="stat-card"><strong id="statCanceled">0</strong><span>Canceladas</span></div>
+      </div>
+    </section>
+
+    <section id="tab-appointments" class="admin-tabpanel" hidden>
+      <div class="admin-card">
+        <div class="admin-actions">
+          <label>Filtrar por data: <input type="date" id="filterDate" /></label>
+          <button class="btn-ghost" id="clearFilter">Limpar</button>
+        </div>
+        <div id="appointmentsTableWrap" class="patient-results"></div>
+      </div>
+    </section>
+
+    <section id="tab-blocks" class="admin-tabpanel" hidden>
+      <div class="admin-card">
+        <h3 class="agenda__subtitle" style="text-align:left;">Bloquear dias</h3>
+        <div class="admin-actions">
+          <input type="date" id="blockDate" />
+          <button id="addBlock" class="btn-primary btn-sm">Adicionar</button>
+        </div>
+        <div id="blockedList" class="patient-results"></div>
+
+        <hr style="margin:18px 0; border:none; border-top:1px solid #eee4c0;" />
+
+        <h3 class="agenda__subtitle" style="text-align:left;">Bloquear horários</h3>
+        <div class="admin-actions">
+          <input type="date" id="blockTimeDate" />
+          <select id="blockTimeSlot" aria-label="Horário">
+            <!-- opções preenchidas via admin.js -->
+          </select>
+          <button id="addBlockTime" class="btn-primary btn-sm">Adicionar</button>
+        </div>
+        <div id="blockedTimesList" class="patient-results"></div>
+      </div>
+    </section>
+
+    <section id="tab-services" class="admin-tabpanel" hidden>
+      <div class="admin-card">
+        <h3 class="agenda__subtitle" style="text-align:left;">Tipos de atendimento</h3>
+        <div class="admin-actions">
+          <input type="text" id="serviceName" placeholder="Ex.: Convênio X" />
+          <button id="addService" class="btn-primary btn-sm">Adicionar</button>
+        </div>
+        <div id="servicesList" class="patient-results"></div>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer" class="footer"></footer>
+
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

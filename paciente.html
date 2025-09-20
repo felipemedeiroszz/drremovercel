@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Área do Paciente - Consultas</title>
+  <meta name="description" content="Consulte seus agendamentos informando CPF e data de nascimento." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="img/logoremo.png" />
+</head>
+<body class="page">
+  <header id="site-header" class="header"></header>
+  <main class="container patient-page">
+    <h1 class="agenda__title">Área do Paciente</h1>
+    <p class="patient-subtitle">Informe seu CPF e sua data de nascimento para visualizar seus agendamentos.</p>
+
+    <form id="patientPageForm" class="patient-form">
+      <div class="patient-form-row">
+        <div class="form-field">
+          <label for="ppCpf">CPF</label>
+          <input id="ppCpf" type="text" inputmode="numeric" placeholder="000.000.000-00" required />
+        </div>
+        <div class="form-field">
+          <label for="ppBirth">Data de nascimento</label>
+          <input id="ppBirth" type="date" required />
+        </div>
+        <div class="form-field form-field--action">
+          <button class="btn-primary btn-sm btn-shine" type="submit">Ver consultas</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="patientPageResults" class="patient-results" aria-live="polite"></div>
+  </main>
+  <footer id="site-footer" class="footer"></footer>
+
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/paciente.js"></script>
+</body>
+</html>
